@@ -114,3 +114,9 @@ li.watched span {
     background-color: #e62429;
     transition: width 0.3s ease;
 }
+
+.marvel-logo {
+    width: 180px;
+    height: auto;
+    margin-bottom: 10px;
+}
