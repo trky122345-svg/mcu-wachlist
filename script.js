@@ -1,8 +1,24 @@
 const movies = document.querySelectorAll("li");
 
+const progressText = document.getElementById("progress-text");
+const progress = document.getElementById("progress");
+
+function updateProgress() {
+
+    const totalMovies = movies.length;
+    const watchedMovies = document.querySelectorAll("li.watched").length;
+
+    const percentage = totalMovies === 0
+        ? 0
+        : (watchedMovies / totalMovies) * 100;
+
+    progressText.textContent = `${watchedMovies} / ${totalMovies} Watched`;
+    progress.style.width = `${percentage}%`;
+}
+
 movies.forEach(movie => {
 
-    const movieName = movie.textContent;
+    const movieName = movie.textContent.trim();
 
     const check = document.createElement("span");
     check.textContent = "✓";
@@ -23,6 +39,8 @@ movies.forEach(movie => {
             localStorage.removeItem(movieName);
         }
 
+        updateProgress();
     });
-
 });
+
+updateProgress();
