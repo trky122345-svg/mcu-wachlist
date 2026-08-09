@@ -20,7 +20,7 @@ movies.forEach(movie => {
 
     const movieName = movie.textContent.trim();
 
-
+    
 
     if (localStorage.getItem(movieName) === "watched") {
         movie.classList.add("watched");
@@ -37,7 +37,25 @@ movies.forEach(movie => {
         }
 
         updateProgress();
+        updatePhaseColors();
     });
 });
 
 updateProgress();
+
+function updatePhaseColors() {
+    const sections = document.querySelectorAll("section");
+
+    sections.forEach(section => {
+        const title = section.querySelector(".phase-title");
+        const movies = section.querySelectorAll("li");
+
+        if (!title || movies.length === 0) return;
+
+        const allWatched = [...movies].every(movie =>
+            movie.classList.contains("watched")
+        );
+
+        title.classList.toggle("completed", allWatched);
+    });
+}
