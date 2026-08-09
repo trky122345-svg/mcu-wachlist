@@ -1,122 +1,172 @@
+/* =========================
+   GENERAL
+========================= */
+
 body {
-    background-color: #0a0a0a;
+    margin: 0;
+    padding: 30px;
+    background: #111;
     color: white;
     font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 40px;
 }
 
-header {
+
+/* =========================
+   TITLE
+========================= */
+
+h1 {
     text-align: center;
-    margin-bottom: 70px;
+    margin-bottom: 10px;
 }
 
-header h1 {
-    color: #e62429;
-    font-size: 55px;
-    margin: 0;
-    font-weight: 900;
+h2 {
+    color: #ff3c00;
+    margin-top: 45px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid #ff3c00;
+    padding-bottom: 10px;
 }
 
-header h2 {
-    font-size: 32px;
-    margin-top: 10px;
+
+/* =========================
+   PROGRESS
+========================= */
+
+#progress-text {
+    text-align: center;
+    margin: 20px 0 10px;
+    font-weight: bold;
 }
 
-main {
-    max-width: 1200px;
-    margin: auto;
+#progress {
+    width: 70%;
+    height: 8px;
+    background: #555;
+    border-radius: 10px;
+    margin: 0 auto 40px;
+    overflow: hidden;
 }
 
-section {
-    margin-bottom: 60px;
+#progress::after {
+    content: "";
+    display: block;
+    height: 100%;
+    width: 0%;
+    background: #ff3c00;
 }
 
-section h2 {
-    color: #e62429;
-    font-size: 28px;
-    border-bottom: 2px solid #e62429;
-    padding-bottom: 12px;
-    margin-bottom: 25px;
-}
+
+/* =========================
+   MOVIE LIST
+========================= */
 
 ul {
     list-style: none;
     padding: 0;
+    margin: 0;
+
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 15px;
 }
 
+
+/* =========================
+   MOVIE CARD
+========================= */
+
 li {
-    background-color: #151515;
-    padding: 30px 20px;
+    height: 100px;
+
+    background: #3b3b3b;
     border-radius: 10px;
-    font-size: 18px;
-    text-align: center;
-    min-height: 40px;
 
     display: flex;
     align-items: center;
     justify-content: center;
 
+    cursor: pointer;
+
+    position: relative;
+    overflow: hidden;
+
     transition: 0.2s;
 }
 
-li:hover {
-    background-color: #222;
-    transform: translateY(-3px);
-}
 
+/* =========================
+   MOVIE IMAGE
+========================= */
 
-li.watched {
-    border: 2px solid #e62429;
-    opacity: 0.6;
-}
-li {
-    position: relative;
-}
+li img {
+    max-width: 85%;
+    max-height: 75px;
 
-li span {
-    display: none;
-    position: absolute;
-    top: 10px;
-    right: 15px;
-    font-size: 22px;
-    color: #e62429;
-}
+    width: auto;
+    height: auto;
 
-li.watched span {
+    object-fit: contain;
+
     display: block;
 }
 
-.progress-container {
-    max-width: 600px;
-    margin: 30px auto 0;
+
+/* =========================
+   HOVER
+========================= */
+
+li:hover {
+    transform: translateY(-3px);
+    background: #4a4a4a;
 }
 
-#progress-text {
-    font-size: 18px;
-    margin-bottom: 10px;
+
+/* =========================
+   WATCHED
+========================= */
+
+li.watched {
+    background: #222;
+    opacity: 0.45;
 }
 
-.progress-bar {
-    width: 100%;
-    height: 12px;
-    background-color: #222;
-    border-radius: 20px;
-    overflow: hidden;
+li.watched::after {
+    content: "✓";
+
+    position: absolute;
+    top: 8px;
+    right: 10px;
+
+    color: #ff3c00;
+    font-size: 22px;
+    font-weight: bold;
 }
 
-#progress {
-    width: 0%;
-    height: 100%;
-    background-color: #e62429;
-    transition: width 0.3s ease;
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 800px) {
+
+    ul {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+@media (max-width: 500px) {
+
+    ul {
+        grid-template-columns: 1fr;
+    }
+
 }
 
 .marvel-logo {
     width: 190px;
     height: auto;
-    margin-bottom: 10px;
+    display: block;
+    margin: 0 auto 10px;
 }
