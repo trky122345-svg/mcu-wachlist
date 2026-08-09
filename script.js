@@ -16,12 +16,13 @@ function updateProgress() {
     progress.style.width = `${percentage}%`;
 }
 
+
 movies.forEach(movie => {
 
-    const movieName = movie.textContent.trim();
+    // نستخدم اسم الفيلم الموجود في alt
+    const movieName = movie.querySelector("img").alt;
 
-    
-
+    // تحميل الحالة المحفوظة
     if (localStorage.getItem(movieName) === "watched") {
         movie.classList.add("watched");
     }
@@ -41,21 +42,27 @@ movies.forEach(movie => {
     });
 });
 
-updateProgress();
 
 function updatePhaseColors() {
+
     const sections = document.querySelectorAll("section");
 
     sections.forEach(section => {
+
         const title = section.querySelector(".phase-title");
-        const movies = section.querySelectorAll("li");
+        const phaseMovies = section.querySelectorAll("li");
 
-        if (!title || movies.length === 0) return;
+        if (!title || phaseMovies.length === 0) return;
 
-        const allWatched = [...movies].every(movie =>
+        const allWatched = [...phaseMovies].every(movie =>
             movie.classList.contains("watched")
         );
 
         title.classList.toggle("completed", allWatched);
     });
 }
+
+
+// تشغيل عند فتح الموقع
+updateProgress();
+updatePhaseColors();
