@@ -20,10 +20,7 @@ movies.forEach(movie => {
 
     const movieName = movie.textContent.trim();
 
-    const check = document.createElement("span");
-    check.textContent = "✓";
 
-    movie.appendChild(check);
 
     if (localStorage.getItem(movieName) === "watched") {
         movie.classList.add("watched");
