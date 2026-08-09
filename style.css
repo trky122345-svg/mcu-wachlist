@@ -170,3 +170,22 @@ li.watched::after {
     display: block;
     margin: 0 auto 10px;
 }
+
+li img {
+    max-width: 85% !important;
+    max-height: 75px !important;
+    width: auto !important;
+    height: auto !important;
+    object-fit: contain !important;
+}
+
+.secret-wars img {
+    max-width: 85%;
+    max-height: 75px;
+    object-fit: contain;
+}
+
+.phase-title.completed {
+    color: #00ff66;
+    border-color: #00ff66;
+}
